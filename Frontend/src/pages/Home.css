@@ -1,0 +1,109 @@
+.homeDiv {
+  margin: 0;
+  padding: 0 0 40px 0; /* bottom padding for last card spacing */
+  font-family: sans-serif;
+  image-rendering: auto;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.add-notes-container {
+  display: flex;
+  justify-content: center;   /* or flex-start, flex-end */
+  margin-top: 20px; 
+}
+
+
+.add-notes-btn {
+  padding: 10px 20px;
+  background-color: #2196f3;
+  color: #ffffff;
+  border: none;
+  position: relative;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-notes-btn:hover {
+  background-color: #1976d2;
+  transform: translateY(-2px);
+}
+
+.notesContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /*  Exactly 3 cards per row */
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 40px; 
+}
+
+.note-card {
+  width: 100%; /* Take full width of grid column */
+  box-sizing: border-box; /*  Respect padding & borders */
+  background: #cfe7f0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  min-height: 200px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+.note-card p {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  display: block;
+  word-break: break-word;
+}
+
+
+.note-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.note-tag {
+  font-size: 12px;
+  color: #888;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.iconDiv{
+  margin-left: 320px;
+  justify-content: space-between;
+  display:flex;
+  width:70px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.searchContainer {
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  width: 300px;
+  height: 36px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255,255,255,0.1);
+  color: #706b6b;
+  backdrop-filter: blur(4px);
+} 
+
+.no-notes-message {
+  font-size: 20px;
+}
