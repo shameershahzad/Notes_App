@@ -1,0 +1,1 @@
+This is a Notes Application built with the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to manage their notes with full CRUD functionality, search/filter notes, and pin important notes for quick access.
