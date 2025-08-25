@@ -23,7 +23,7 @@ const editNotesData = (id) => {
   }
   else{
     
-   axios.put(`http://localhost:3001/notes/editNotes/${id}`,editData,{headers:{Authorization:`Bearer ${token}`}})
+   axios.put(`${process.env.REACT_APP_API_URL}/notes/editNotes/${id}`,editData,{headers:{Authorization:`Bearer ${token}`}})
    .then(() => {
       setMessage("✅ Notes Updated!")
       setTimeout(() => {
@@ -35,7 +35,7 @@ const editNotesData = (id) => {
 }
 
 useEffect(() => {
- axios.get(`http://localhost:3001/notes/editNotes/${id}`,{
+ axios.get(`${process.env.REACT_APP_API_URL}/notes/editNotes/${id}`,{
     headers:{
         Authorization:`Bearer ${token}`
     }

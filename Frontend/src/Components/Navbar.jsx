@@ -3,7 +3,7 @@ import './Navbar.css'
 import { useNavigate } from 'react-router-dom';
 
 
-function Navbar({allNotes,setData}) {
+function Navbar() {
     const navigate = useNavigate()
 
     const handleLogout = (e) => {

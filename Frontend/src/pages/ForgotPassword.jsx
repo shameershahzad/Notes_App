@@ -16,7 +16,7 @@ function ForgotPassword() {
     },[message])
 
     const handleUpdatePass = () => {
-        axios.put("http://localhost:3001/account/updatePassword",{password:updatePassword})
+        axios.put(`${process.env.REACT_APP_API_URL}/account/updatePassword`,{password:updatePassword})
         .then(result => {
             if(result){
                 setMessage("✅ Password updated!")

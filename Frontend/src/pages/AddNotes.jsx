@@ -14,7 +14,7 @@ function AddNotes() {
 
   const submitNotes = () => {
       const token = localStorage.getItem("token");
-    axios.post("http://localhost:3001/notes/addNotes",{title,body,tag},
+    axios.post(`${process.env.REACT_APP_API_URL}/notes/addNotes`,{title,body,tag},
   {
     headers: {
       Authorization: `Bearer ${token}`

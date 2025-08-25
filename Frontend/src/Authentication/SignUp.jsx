@@ -30,7 +30,7 @@ function SignUp() {
   }
 
  
-  axios.post("http://localhost:3001/account/signUp", {
+  axios.post(`${process.env.REACT_APP_API_URL}/account/signUp`, {
     name,
     email,
     password

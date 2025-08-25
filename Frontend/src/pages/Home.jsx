@@ -14,7 +14,7 @@ function Home() {
   const fetchNotes = () =>{
     const token = localStorage.getItem("token");
 
-    axios.get("http://localhost:3001/notes/home", {
+    axios.get(`${process.env.REACT_APP_API_URL}/notes/home`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(result => {
@@ -62,7 +62,7 @@ function Home() {
   const deleteNotes = (id) => {
     const token = localStorage.getItem("token");
 
-    axios.delete(`http://localhost:3001/notes/deleteNotes/${id}`, {
+    axios.delete(`${process.env.REACT_APP_API_URL}/notes/deleteNotes/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(() => {
