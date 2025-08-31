@@ -9,7 +9,7 @@ connectDB()
 const app = express();  
 app.use(express.json())
 app.use(cors({
-  origin: "*", // your Netlify URL
+  origin: "*", 
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
@@ -17,7 +17,9 @@ app.use(cors({
 app.use("/account",accountRoutes)
 app.use("/notes",notesRoutes)
 
-
+app.use("/",(req,res) => {
+  res.send("Backend is running")
+})
 const port = 3001;
 
 app.listen(port,() => {
