@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import "./ForgotPassword.css"
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function ForgotPassword() {
     const [updatePassword,setupdatePassword] = useState('')
     const [message,setMessage] = useState('')
     const nav = useNavigate()
+    const {email} = useParams()
 
     const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
 
@@ -19,7 +20,7 @@ function ForgotPassword() {
     },[message])
 
     const handleUpdatePass = () => {
-        axios.put(`${API_URL}/account/updatePassword`,{password:updatePassword})
+        axios.put(`${API_URL}/account/updatePassword/${email}`,{newPassword:updatePassword})
         .then(result => {
             if(result){
                 setMessage("✅ Password updated!")
