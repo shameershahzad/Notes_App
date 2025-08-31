@@ -9,7 +9,7 @@ connectDB()
 const app = express();  
 app.use(express.json())
 app.use(cors({
-  origin: "https://euphonious-tulumba-19af71.netlify.app", // your Netlify URL
+  origin: "*", // your Netlify URL
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
