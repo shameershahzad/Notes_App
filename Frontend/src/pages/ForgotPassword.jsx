@@ -8,6 +8,9 @@ function ForgotPassword() {
     const [message,setMessage] = useState('')
     const nav = useNavigate()
 
+    const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
+
+
     useEffect(() => {
         if(message){
             const timeout = setTimeout(() => setMessage(''),3000)
@@ -16,7 +19,7 @@ function ForgotPassword() {
     },[message])
 
     const handleUpdatePass = () => {
-        axios.put(`${process.env.REACT_APP_API_URL}/account/updatePassword`,{password:updatePassword})
+        axios.put(`${API_URL}/account/updatePassword`,{password:updatePassword})
         .then(result => {
             if(result){
                 setMessage("✅ Password updated!")

@@ -10,11 +10,13 @@ function Home() {
   const [text, setText] = useState('');
   const [message,setMessage] = useState('')
 
+  const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
+
   // Fetch notes on component mount
   const fetchNotes = () =>{
     const token = localStorage.getItem("token");
 
-    axios.get(`${process.env.REACT_APP_API_URL}/notes/home`, {
+    axios.get(`${API_URL}/notes/home`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(result => {
@@ -62,7 +64,7 @@ function Home() {
   const deleteNotes = (id) => {
     const token = localStorage.getItem("token");
 
-    axios.delete(`${process.env.REACT_APP_API_URL}/notes/deleteNotes/${id}`, {
+    axios.delete(`${API_URL}/notes/deleteNotes/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(() => {

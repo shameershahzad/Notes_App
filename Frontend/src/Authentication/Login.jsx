@@ -12,8 +12,7 @@ function Login() {
 
   const navigate = useNavigate()
 
-const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
-
+  const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
   
 const handleSubmit = (e) => {
   e.preventDefault()

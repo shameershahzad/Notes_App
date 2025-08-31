@@ -12,9 +12,11 @@ function AddNotes() {
   const [message,setMessage] = useState('')
   const navigate = useNavigate()
 
+  const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
+
   const submitNotes = () => {
       const token = localStorage.getItem("token");
-    axios.post(`${process.env.REACT_APP_API_URL}/notes/addNotes`,{title,body,tag},
+    axios.post(`${API_URL}/notes/addNotes`,{title,body,tag},
   {
     headers: {
       Authorization: `Bearer ${token}`

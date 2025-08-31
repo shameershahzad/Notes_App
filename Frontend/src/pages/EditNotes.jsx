@@ -8,10 +8,11 @@ function EditNotes() {
      const [editData,seteditData] = useState({title:"",body:"",tag:""})
      const [originalData,setoriginalData] = useState({title:"",body:"",tag:""})
      const [message,setMessage] = useState('')
-     
 
-const navigate = useNavigate()
-const token = localStorage.getItem("token")
+     const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
+     
+     const navigate = useNavigate()
+     const token = localStorage.getItem("token")
 
 const editNotesData = (id) => {
   if(editData.title === originalData.title && editData.body === originalData.body &&
@@ -23,7 +24,7 @@ const editNotesData = (id) => {
   }
   else{
     
-   axios.put(`${process.env.REACT_APP_API_URL}/notes/editNotes/${id}`,editData,{headers:{Authorization:`Bearer ${token}`}})
+   axios.put(`${API_URL}/notes/editNotes/${id}`,editData,{headers:{Authorization:`Bearer ${token}`}})
    .then(() => {
       setMessage("✅ Notes Updated!")
       setTimeout(() => {
@@ -35,7 +36,7 @@ const editNotesData = (id) => {
 }
 
 useEffect(() => {
- axios.get(`${process.env.REACT_APP_API_URL}/notes/editNotes/${id}`,{
+ axios.get(`${API_URL}/notes/editNotes/${id}`,{
     headers:{
         Authorization:`Bearer ${token}`
     }
