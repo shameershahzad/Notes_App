@@ -49,13 +49,14 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     padding: 10px;
-    color: white;
+    color: #ffffff;
     outline: none;
     width: 95%;
   }
 
   .inputField::placeholder {
-    color: white;
+    color: #e0e0e0;
+    opacity: 1;
   }
 
   .form-action {
