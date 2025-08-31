@@ -54,7 +54,7 @@ router.post("/verifyEmail",async(req,res) => {
 try{
     const foundEmail = await accountModel.findOne({email})
     if(!foundEmail){
-        return res.status(404).json({message:"Email doesn't exist"})
+        return res.status(400).json({message:"Email doesn't exist"})
     }
     return res.status(200).json({message:"Email found"})
 
@@ -63,12 +63,12 @@ try{
 }
 })
 
-router.put("/updatePassword",async(req,res) => {
-    const {password} = req.body;
+router.put("/updatePassword/:email",async(req,res) => {
+    const {newPassword} = req.body;
     try{
-        const hashPassword = await bcrypt.hash(password,10)
+        const hashPassword = await bcrypt.hash(newPassword,10)
     
-         const updatePass = await accountModel.updateOne({email:req.params.email   ,password:hashPassword});
+         const updatePass = await accountModel.updateOne({email:req.params.email},{$set:{password:hashPassword}});
          if(updatePass){
             return res.status(200).json({message:"Password updated"})
          }
