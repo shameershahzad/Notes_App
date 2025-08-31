@@ -12,6 +12,8 @@ function SignUp() {
  const [message,setMessage] = useState('')
  const navigate = useNavigate()
 
+ const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
+
  const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -30,7 +32,7 @@ function SignUp() {
   }
 
  
-  axios.post(`${process.env.REACT_APP_API_URL}/account/signUp`, {
+  axios.post(`${API_URL}/account/signUp`, {
     name,
     email,
     password

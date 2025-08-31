@@ -10,13 +10,15 @@ function Login() {
   const [password,setPassword] = useState('');
   const [message,setMessage] = useState('');
 
-    
   const navigate = useNavigate()
+
+const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
+
   
 const handleSubmit = (e) => {
   e.preventDefault()
 
-  axios.post(`${process.env.REACT_APP_API_URL}/account/`,{email,password})
+  axios.post(`${API_URL}/account/`,{email,password})
   .then(result => {
  
        console.log(result.data);
@@ -56,7 +58,7 @@ const handleForgotPass = () => {
      if(!email){
       setMessage("Please enter email to forgot password")
      }else{
-        axios.post(`${process.env.REACT_APP_API_URL}/account/verifyEmail`,{email})
+        axios.post(`${API_URL}/account/verifyEmail`,{email})
         .then((result) => {
                 if(result.data.message === "Email found" ){
                   setMessage("✅ Email Verified")
