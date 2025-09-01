@@ -17,9 +17,7 @@ app.use(cors({
 app.use("/account",accountRoutes)
 app.use("/notes",notesRoutes)
 
-app.use("/",(req,res) => {
-  res.send("Backend is running")
-})
+
 const port = 3001;
 
 app.listen(port,() => {
