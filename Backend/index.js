@@ -1,7 +1,7 @@
 const express = require('express');
-const accountRoutes = require("../routes/accountRoutes");
-const notesRoutes = require("../routes/notesRoutes");
-const connectDB = require("../config/db");
+const accountRoutes = require("./routes/accountRoutes");
+const notesRoutes = require("./routes/notesRoutes");
+const connectDB = require("./config/db");
 const cors = require("cors");
 
 connectDB();
