@@ -1,25 +1,21 @@
 const express = require('express');
-const accountRoutes = require("./routes/accountRoutes")
-const notesRoutes = require("./routes/notesRoutes")
-const connectDB = require("./config/db")
-const cors  = require("cors")
+const accountRoutes = require("../routes/accountRoutes");
+const notesRoutes = require("../routes/notesRoutes");
+const connectDB = require("../config/db");
+const cors = require("cors");
 
-connectDB()
+connectDB();
 
-const app = express();  
-app.use(express.json())
-app.use(cors({
-  origin: "*", 
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+const app = express();
 
-app.use("/account",accountRoutes)
-app.use("/notes",notesRoutes)
+app.use(express.json());
+app.use(cors({ origin: "*" }));
 
+app.get("/", (req, res) => {
+  res.send("Backend working on Vercel ✅");
+});
 
-const port = 3001;
+app.use("/account", accountRoutes);
+app.use("/notes", notesRoutes);
 
-app.listen(port,() => {
-    console.log(`Server is running at port: ${port}`)
-})
+module.exports = app;   
