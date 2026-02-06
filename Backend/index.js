@@ -15,10 +15,20 @@ app.get("/", (req, res) => {
   res.send("Backend working on Vercel ✅");
 });
 
-app.get("/db-check", (req, res) => {
-  res.json({
-    mongoUriLoaded: !!process.env.MONGO_URI
-  });
+app.get("/db-check", async (req, res) => {
+  try {
+    await mongoose.connection.db.admin().ping();
+    res.json({
+      mongoUriLoaded: !!process.env.MONGO_URI,
+      dbConnected: true
+    });
+  } catch (error) {
+    res.json({
+      mongoUriLoaded: !!process.env.MONGO_URI,
+      dbConnected: false,
+      error: error.message
+    });
+  }
 });
 
 app.use("/account", accountRoutes);
