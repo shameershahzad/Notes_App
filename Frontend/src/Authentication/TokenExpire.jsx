@@ -24,7 +24,7 @@ function TokenExpire() {
 
         return () => clearTimeout(timeout);
       }
-    } catch (err) {
+    } catch () {
       console.error("Invalid token");
       localStorage.removeItem("token");
       window.location.href = "/";
