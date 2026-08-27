@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Navbar() {
     const navigate = useNavigate()
 
-    const handleLogout = (e) => {
+    const handleLogout = () => {
         localStorage.removeItem("token");
         navigate("/")
     }

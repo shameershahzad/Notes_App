@@ -57,7 +57,7 @@ useEffect(() => {
   console.log(err);
   setMessage("Error fetching notes")
  })
-},[id,navigate])
+},[id,navigate,API_URL,token])
 
 useEffect(() => {
      if (message) {

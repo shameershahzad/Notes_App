@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,7 +13,7 @@ function Home() {
   const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
 
   // Fetch notes on component mount
-  const fetchNotes = () =>{
+  const fetchNotes = useCallback(() =>{
     const token = localStorage.getItem("token");
 
     axios.get(`${API_URL}/notes/home`, {
@@ -32,15 +32,15 @@ function Home() {
      console.log("Error fetching notes:", err)
      setMessage("Error fetching notes")
     });
-  }
+  }, [API_URL])
 
   useEffect(() => {
     fetchNotes()
-  }, []);
+  }, [fetchNotes]);
 
   // Live search filter
   useEffect(() => {
-    if (text.trim() === '') {     
+    if (text.trim() === '') {
       setFilteredNotes(allnotes); // Show all notes if input is empty
     } else {
       const filtered = allnotes.filter(note =>
@@ -50,7 +50,7 @@ function Home() {
       );
       setFilteredNotes(filtered);
     }
-  }, [text]);
+  }, [text, allnotes]);
 
   // Edit note
   const editNotes = (id) => {
