@@ -25,7 +25,7 @@ router.delete("/deleteNotes/:id",verifyToken,(req,res) => {
 
 router.get("/editNotes/:id",verifyToken,(req,res) => {
     const {id} = req.params;
-    notesModel.findById(id)
+    notesModel.findOne({_id:id,userId:req.userId})
     .then(result => {
         if(!result){
             return res.status(200).json({message:"No notes found!"})
