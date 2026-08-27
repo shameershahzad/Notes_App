@@ -10,8 +10,25 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+
+const defaultOrigins = [
+  "http://localhost:5173",
+  "https://full-stack-notes-application.netlify.app",
+];
+const envOrigins = (process.env.FRONTEND_URL || "")
+  .split(",")
+  .map((url) => url.trim().replace(/\/$/, ""))
+  .filter(Boolean);
+const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "*",
+  origin: (origin, callback) => {
+    // Allow non-browser requests (no Origin header) and any listed origin
+    if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ""))) {
+      return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
