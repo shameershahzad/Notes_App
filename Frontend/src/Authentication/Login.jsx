@@ -62,7 +62,7 @@ const handleForgotPass = () => {
                 if(result.data.message === "Email found" ){
                   setMessage("✅ Email Verified")
                   setTimeout(() => {
-                    navigate(`/forgotPassword/${email}`)
+                    navigate(`/forgotPassword/${email}`, { state: { resetToken: result.data.resetToken } })
                   },1500)
                 }
         })

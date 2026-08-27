@@ -56,7 +56,8 @@ router.post("/verifyEmail", async (req, res) => {
     if (!foundEmail) {
       return res.status(400).json({ message: "Email doesn't exist" })
     }
-    return res.status(200).json({ message: "Email found" })
+    const resetToken = jwt.sign({ email, purpose: "reset" }, process.env.JWT_SECRET || "Your Secret Key", { expiresIn: "15m" });
+    return res.status(200).json({ message: "Email found", resetToken })
 
   } catch (err) {
     return res.status(500).json({ error: err.message })
@@ -64,7 +65,21 @@ router.post("/verifyEmail", async (req, res) => {
 })
 
 router.put("/updatePassword/:email", async (req, res) => {
-  const { newPassword } = req.body;
+  const { newPassword, resetToken } = req.body;
+
+  if (!resetToken) {
+    return res.status(403).json({ message: "Missing reset token" })
+  }
+
+  try {
+    const decoded = jwt.verify(resetToken, process.env.JWT_SECRET || "Your Secret Key");
+    if (decoded.purpose !== "reset" || decoded.email !== req.params.email) {
+      return res.status(403).json({ message: "Invalid reset token" })
+    }
+  } catch (err) {
+    return res.status(403).json({ message: "Invalid or expired reset token" })
+  }
+
   try {
     const hashPassword = await bcrypt.hash(newPassword, 10)
 
