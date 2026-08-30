@@ -71,6 +71,10 @@ router.put("/updatePassword/:email", async (req, res) => {
     return res.status(403).json({ message: "Missing reset token" })
   }
 
+  if (!newPassword || !newPassword.trim()) {
+    return res.status(400).json({ message: "Please enter a new password" })
+  }
+
   try {
     const decoded = jwt.verify(resetToken, process.env.JWT_SECRET || "Your Secret Key");
     if (decoded.purpose !== "reset" || decoded.email !== req.params.email) {

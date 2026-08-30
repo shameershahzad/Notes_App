@@ -30,6 +30,10 @@ function ForgotPassword() {
     },[resetToken, nav])
 
     const handleUpdatePass = () => {
+        if(!updatePassword.trim()){
+            setMessage("Please enter a new password")
+            return
+        }
         axios.put(`${API_URL}/account/updatePassword/${email}`,{newPassword:updatePassword, resetToken})
         .then(result => {
             if(result){
