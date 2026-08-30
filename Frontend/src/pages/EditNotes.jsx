@@ -68,8 +68,7 @@ useEffect(() => {
 
   return (
     <>
-     {message && <h2 style = {{textAlign:"center",marginTop:"20px",
-      color:message.startsWith("✅") ? "#4CAF50": "red"}}>{message}</h2>}
+     {message && <h2 className={`status-message ${message.startsWith("✅") ? "success" : "error"}`}>{message}</h2>}
       <div className='notesDiv'>
         <h1 className='form-heading'>Edit Notes</h1>
          <div className='input-group'>
