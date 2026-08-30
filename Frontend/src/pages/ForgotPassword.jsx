@@ -47,7 +47,7 @@ function ForgotPassword() {
     }
   return (
     <>
-     {message && <h2 style = {{textAlign:"center",color:message.startsWith("✅") ? "green":"red"}}>{message}</h2>}
+     {message && <h2 style = {{textAlign:"center",marginTop:"20px",color:message.startsWith("✅") ? "#4CAF50": "red"}}>{message}</h2>}
     <div className='forgotPassDiv'>
      <h1 className='Form-Title'>Forgot Password</h1>
      <input type = "password" value = {updatePassword} className='Input-Field' placeholder='Forgot Password...'
