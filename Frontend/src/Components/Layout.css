@@ -1,0 +1,14 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Navbar sits above this in normal flow and has its own height, so this
+   fills only what's left - previously .homeDiv claimed height:100vh on
+   top of the navbar's own height, pushing its bottom edge below the
+   viewport where it got clipped by body's overflow:hidden. */
+.layout-content {
+  flex: 1;
+  min-height: 0;
+}
