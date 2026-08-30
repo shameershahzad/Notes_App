@@ -45,3 +45,28 @@ big{
   margin-left: 55%;
 }
 
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .navbar-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .navbar-title {
+    font-size: 18px;
+  }
+
+  .logout-button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+

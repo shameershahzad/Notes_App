@@ -6,9 +6,10 @@
 .notesDiv{
   position: absolute;
   top: 43%;
-  left: 50%;  
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 320px;
+  height: 400px;
   padding: 25px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.1);
@@ -17,6 +18,23 @@
   -webkit-backdrop-filter: blur(10px);
 
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .notesDiv {
+    width: 85vw;
+    max-width: 320px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .notesDiv {
+    width: 92vw;
+    height: auto;
+    top: 50%;
+    box-sizing: border-box;
+  }
 }
 
 
