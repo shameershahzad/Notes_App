@@ -26,6 +26,33 @@
     color: #fff;
   }
 
+  @media (max-width: 768px) {
+    .signupDiv {
+      width: 85vw;
+      max-width: 320px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      height: 100dvh;
+      overflow-y: auto;
+    }
+
+    .signupDiv {
+      position: absolute;
+      top: 50%;
+      width: 92vw;
+      height: auto;
+      padding: 18px;
+      box-sizing: border-box;
+    }
+
+    .inputField {
+      box-sizing: border-box;
+    }
+  }
+
   .form-heading {
     text-align: center;
     margin-bottom: 20px;

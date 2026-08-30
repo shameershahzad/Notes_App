@@ -16,7 +16,7 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   height: 350px;
   width: 350px;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -29,6 +29,36 @@ body {
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .loginDiv {
+    width: 85vw;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    height: 100dvh;
+    overflow-y: auto;
+  }
+
+  .loginDiv {
+    position: absolute;
+    width: 92vw;
+    height: auto;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .input-group label {
+    font-size: 16px;
+  }
+
+  .input-fields {
+    box-sizing: border-box;
+  }
+}
+
 /* Blurred input fields */
 .input-fields {
   background: rgba(255, 255, 255, 0.15);
@@ -37,7 +67,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 6px;
   padding: 10px;
-  color: white;
+  color: #706b6b;
   outline: none;
   width: 93%;
   margin-bottom: 10px

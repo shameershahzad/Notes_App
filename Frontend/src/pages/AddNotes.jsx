@@ -52,7 +52,7 @@ function AddNotes() {
     <>
        {message && <h2 style = {{textAlign:"center",marginTop:"20px",
       color:message.startsWith("✅") ? "#4CAF50": "red"}}>{message}</h2>}
-       <div className='notesDiv' style = {{height:"400px",width: "370px"}}> 
+       <div className='notesDiv'>
         <h1 className='form-heading'>Add Notes</h1>
          <div className='input-group'>
             <label>Title:</label>
