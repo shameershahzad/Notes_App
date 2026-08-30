@@ -1,7 +1,15 @@
 .layout {
   display: flex;
   flex-direction: column;
+  /* 100vh on mobile is the LARGEST possible viewport (as if the browser's
+     address bar were hidden) - it doesn't shrink when that bar is
+     actually showing, so this element ends up taller than what's really
+     visible, and body's overflow:hidden means the extra bit at the
+     bottom can never be scrolled into view. 100dvh tracks the real
+     current viewport instead; the plain vh stays as a fallback for
+     browsers that don't support dvh yet. */
   height: 100vh;
+  height: 100dvh;
 }
 
 /* Navbar sits above this in normal flow and has its own height, so this
