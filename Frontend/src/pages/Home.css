@@ -4,11 +4,10 @@
   font-family: sans-serif;
   image-rendering: auto;
   box-sizing: border-box;
-  /* flex:1 inside .layout-content's flex column, so this shrinks to make
-     room when the status-message popup is rendered above it as a sibling,
-     instead of always claiming the full container height and overlapping it. */
-  flex: 1;
-  min-height: 0;
+  /* 100% of .layout-content (the space left after the navbar), not
+     100vh - 100vh here on top of the navbar's own height pushed the
+     bottom of this div below the viewport, clipping it. */
+  height: 100%;
   overflow-y: auto;
 }
 
