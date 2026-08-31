@@ -15,6 +15,15 @@ function AddNotes() {
   const API_URL = import.meta.env.VITE_API_URL;  // Vite uses import.meta.env
 
   const submitNotes = () => {
+      if(!title.trim() || !body.trim() || !tag.trim()){
+          setMessage("All fields must be filled.")
+          return;
+      }
+      if(!tag.trim().startsWith("#")){
+          setMessage("Tag must start with #")
+          return;
+      }
+
       const token = localStorage.getItem("token");
     axios.post(`${API_URL}/notes/addNotes`,{title,body,tag},
   {
@@ -23,10 +32,6 @@ function AddNotes() {
     }
   })
     .then(result => {
-        if(!tag || !body || !title ){
-            setMessage("All fields must be filled.")
-            return;
-        }
         if(result.data.message === "Notes Added!"){
             console.log(result.data)
             setMessage("✅ Notes added!")
