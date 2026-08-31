@@ -41,11 +41,32 @@ router.post("/", async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET || "Your Secret Key", { expiresIn: "1h" });
+    const refreshToken = jwt.sign({ id: user._id, type: "refresh" }, process.env.JWT_SECRET || "Your Secret Key", { expiresIn: "7d" });
 
-    res.status(200).json({ message: "Success", token });
+    res.status(200).json({ message: "Success", token, refreshToken });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+
+router.post("/refreshToken", async (req, res) => {
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return res.status(401).json({ message: "No refresh token provided" });
+  }
+
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET || "Your Secret Key");
+    if (decoded.type !== "refresh") {
+      return res.status(401).json({ message: "Invalid refresh token" });
+    }
+
+    const token = jwt.sign({ id: decoded.id }, process.env.JWT_SECRET || "Your Secret Key", { expiresIn: "1h" });
+    return res.status(200).json({ token });
+  } catch (err) {
+    return res.status(401).json({ message: "Refresh token expired or invalid" });
   }
 });
 

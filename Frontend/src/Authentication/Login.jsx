@@ -24,6 +24,7 @@ const handleSubmit = (e) => {
 
     if(result.data.token){
       localStorage.setItem("token",result.data.token)
+      localStorage.setItem("refreshToken",result.data.refreshToken)
     }
 
     
