@@ -18,7 +18,7 @@ const handleSubmit = (e) => {
   e.preventDefault()
 
   if(!email.trim() || !password.trim()){
-    setMessage("Please enter both email and password")
+    setMessage("Email and password are required")
     return
   }
 
